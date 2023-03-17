@@ -2,6 +2,7 @@ const express = require('express');
 const conectarDB = require('./config/db');
 const cors = require("cors");
 
+
 //Se crear el servidor
 const app = express();
 
@@ -9,6 +10,7 @@ const app = express();
 conectarDB();
 app.use(cors());
 app.use(express.json());
+
 
 const usuarioRoutes = require('./routes/usuario');
 app.use('/api/Usuario', usuarioRoutes);

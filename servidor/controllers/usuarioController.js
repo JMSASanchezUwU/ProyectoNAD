@@ -134,16 +134,14 @@ exports.eliminarUsuarioLog = async (req, res) => {
   }
 };
 
-// exports.obtenerUsuariosFiltro = async(req,res) =>{
-//   try {
-//       const usuarios = await Usuario.find()
-//                                     .sort({ edad: -1 })
-//                                     .exec();
-
-//       res.json(usuarios);
-
-//   } catch (error) {
-//       console.log(error);
-//       res.status(500).send('Hubo un error!!! :(');
-//   }
-// }
+ exports.obtenerUsuariosOrdenados = async (req, res) => {
+    try {
+      const campo = req.query.campo;
+      const orden = parseInt(req.query.orden);
+      const usuarios = await Usuario.find().sort({ [campo]: orden });
+      res.json(usuarios);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('Hubo un error!!! :(');
+    }
+ }
